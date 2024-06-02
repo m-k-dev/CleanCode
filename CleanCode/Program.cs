@@ -15,7 +15,7 @@ namespace CleanCode
     {
         static void Main(string[] args)
         {
-            Console.Write($"Please enter shapes count limit (current Lim = {Settings.Lim}: )");
+            Console.Write($"Please enter shapes count limit (current Lim = {Settings.Lim}): ");
             string? str = Console.ReadLine();
             if (str != null)
             {
