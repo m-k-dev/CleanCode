@@ -1,6 +1,10 @@
 ﻿using System.Runtime;
 using f32 = double;
 
+/* ========================================================================
+LISTING 27
+======================================================================== */
+
 namespace CleanCode
 {
     struct shape_union
@@ -35,22 +39,24 @@ namespace CleanCode
                 ref shape_union shape = ref shapes[i];
                 shape.Type = type;
 
+                f32 width = ((f32)type + 30.5d) * 12;
+
                 switch (type)
                 {
                     case shape_type.Shape_Square:
-                        shape.Width = (int)type;
+                        shape.Width = width;
                         shape.Height = shape.Width;
                         break;
                     case shape_type.Shape_Rectangle:
-                        shape.Width = (int)type;
-                        shape.Height = (int)type * 2;
+                        shape.Width = width;
+                        shape.Height = width * 2;
                         break;
                     case shape_type.Shape_Triangle:
-                        shape.Width = (int)type;
-                        shape.Height = (int)type * 4;
+                        shape.Width = width;
+                        shape.Height = width * 4;
                         break;
                     case shape_type.Shape_Circle:
-                        shape.Width = (int)type * 8;
+                        shape.Width = width * 8;
                         shape.Height = shape.Width;
                         break;
                 }

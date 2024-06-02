@@ -1,30 +1,33 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 using f32 = double;
 
+/* ========================================================================
+LISTING 22 (shap_base and childs)
+======================================================================== */
+
 namespace CleanCode
 {
-    /* ========================================================================
-    LISTING 22 (shap_base and childs)
-    ======================================================================== */
     public abstract class shape_base
     {
         public abstract f32 Area();
         static public shape_base Create(shape_type type)
         {
+            f32 width = ((f32)type + 30.5d) * 12;
+
             shape_base shape;
             switch (type)
             {
                 case shape_type.Shape_Square:
-                    shape = new square((f32)type);
+                    shape = new square(width);
                     break;
                 case shape_type.Shape_Rectangle:
-                    shape = new rectangle((f32)type, (f32)type * 2);
+                    shape = new rectangle(width, width * 2);
                     break;
                 case shape_type.Shape_Triangle:
-                    shape = new triangle((f32)type, (f32)type * 4);
+                    shape = new triangle(width, width * 4);
                     break;
                 case shape_type.Shape_Circle:
-                    shape = new circle((f32)type * 8);
+                    shape = new circle(width * 8);
                     break;
                 default:
                     throw new ArgumentException("Unknown shape type");

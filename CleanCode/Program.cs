@@ -1,18 +1,31 @@
 ﻿// по мотивам
 // https://www.computerenhance.com/p/clean-code-horrible-performance
-///
 
+using System.Reflection.Metadata;
+
+///
 namespace CleanCode
 {
     public class Settings
     {
-        public static readonly uint Lim = 10000000;
+        // Shapes limit, default value
+        public static uint Lim = 10000000;
     }
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine($"Lim = {Settings.Lim}");
+            Console.Write($"Please enter shapes count limit (current Lim = {Settings.Lim}: )");
+            string? str = Console.ReadLine();
+            if (str != null)
+            {
+                str = str.Trim();
+                if (str.Length > 0)
+                {
+                    Settings.Lim = uint.Parse(str);
+                }
+            }
+            Console.WriteLine();
 
             using (VTBL_Tests tests = new())
             {
@@ -39,6 +52,9 @@ namespace CleanCode
                 }
             }
             GC.Collect();
+
+            Console.WriteLine();
+            Console.WriteLine("Done! Please, press any key...");
             Console.ReadKey();
         }
     }
